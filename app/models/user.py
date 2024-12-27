@@ -5,6 +5,6 @@ import uuid
 class User(db.Model):
     __tablename__ = 'users'
     id: Mapped[int] = mapped_column(db.Integer, default=uuid.uuid4(), primary_key=True)
-    username: Mapped[str] = mapped_column(db.String(255), unique=True, nullable=False)
+    name: Mapped[str] = mapped_column(db.String(255), nullable=False)
     email: Mapped[str] = mapped_column(db.String(255), unique=True, nullable=False)
     password: Mapped[str] = mapped_column(db.String(255), nullable=False)
