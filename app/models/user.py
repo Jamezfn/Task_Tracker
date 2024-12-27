@@ -4,7 +4,12 @@ import uuid
 
 class User(db.Model):
     __tablename__ = 'users'
-    id: Mapped[int] = mapped_column(db.Integer, default=uuid.uuid4(), primary_key=True)
+    id: Mapped[int] = mapped_column(db.String(255), default=uuid.uuid4(), primary_key=True)
     name: Mapped[str] = mapped_column(db.String(255), nullable=False)
     email: Mapped[str] = mapped_column(db.String(255), unique=True, nullable=False)
     password: Mapped[str] = mapped_column(db.String(255), nullable=False)
+
+    def __init__(self, name, email, password):
+        self.name = name
+        self.email = email
+        self.password = password
