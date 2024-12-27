@@ -1,8 +1,8 @@
 from flask import Blueprint, request
+from app.conroller.user_conroller import user_controller
 
 auth_routes = Blueprint('auth_routes', __name__, url_prefix='/api')
 
-users = []
 
 @auth_routes.route('/register', methods=['POST'])
 def register():
@@ -14,17 +14,9 @@ def register():
     if not user.get('password'):
         return "Missing password"
     
-    for person in users:
-        if person["email"] == user["email"]:
-            return "user already exists"
+    user_controller.create_user(user["name"], user["email"], user["password"])
         
-    new_user = {
-        "email": user["email"],
-        "name": user["name"],
-        "password": user["password"]
-    }
     
-    users.append(new_user)
     
     # register logic
     return "User registered successfully"
