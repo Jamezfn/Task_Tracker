@@ -2,8 +2,8 @@ POST http://127.0.0.1:5000/api/register
 Content-Type: application/json
 
 {
-    "name": "example2",
-    "email": "example2@gmail",
+    "name": "example1",
+    "email": "example1@gmail",
     "password": "123456"
 }
 
@@ -12,6 +12,6 @@ POST http://127.0.0.1:5000/api/login
 Content-Type: application/json
 
 {
-    "email": "example2@gmail",
-    "password": "12345"
+    "email": "example1@gmail",
+    "password": "123456"
 }
