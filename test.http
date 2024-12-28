@@ -2,8 +2,8 @@ POST http://127.0.0.1:5000/api/register
 Content-Type: application/json
 
 {
-    "name": "example1",
-    "email": "example1@gmail",
+    "name": "example123",
+    "email": "example123@gmail",
     "password": "123456"
 }
 
@@ -12,6 +12,26 @@ POST http://127.0.0.1:5000/api/login
 Content-Type: application/json
 
 {
-    "email": "example1@gmail",
+    "email": "example123@gmail",
     "password": "123456"
 }
+
+###
+GET http://127.0.0.1:5000/api/tasks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNGFmZTYzZGUtYTE2Yi00MWM0LWFkZjQtZWUxZTU3ZmYwMjYxIiwiZXhwIjoxNzM1NDE0NzkxfQ.JkMIQ2gAAfr-hQviNBBzkeJfPe5t711wBt6iwlOMcRU
+
+###
+POST http://127.0.0.1:5000/api/tasks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNGFmZTYzZGUtYTE2Yi00MWM0LWFkZjQtZWUxZTU3ZmYwMjYxIiwiZXhwIjoxNzM1NDE0NzkxfQ.JkMIQ2gAAfr-hQviNBBzkeJfPe5t711wBt6iwlOMcRU
+Content-Type: application/json
+
+{
+    "title": "Manchester city",
+    "description": "Manchester city vs New",
+    "status": "pending",
+    "start_date": "2024 10 3",
+    "due_date": "2025 03 1"
+}
+
+###
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODk3ZmZiZTAtZGM1YS00NDUyLTlhMzUtNTQ1OGMwZDc1NmU4IiwiZXhwIjoxNzM1NDExNTA4fQ.Arh-mpITeiYY-l1xsiHeRi2kKfd-jNvnf2Ucg2xH6uY
