@@ -29,4 +29,4 @@ def login():
         return "Missing email"
     if not user.get('password'):
         return "Input password"
-    return user_controller.authenticate_user(user["email"], user["password"])
+    return user_controller.login_user(user["email"], user["password"])

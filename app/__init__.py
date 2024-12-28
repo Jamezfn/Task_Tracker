@@ -4,6 +4,7 @@ from app.db import db
 import os
 import dotenv
 from app.routes.auth import auth_routes
+from app.routes.task import task_routes
 
 migrate = Migrate()
 dotenv.load_dotenv()
@@ -18,5 +19,6 @@ def create_app():
     with app.app_context():
         db.create_all()
     app.register_blueprint(auth_routes)
+    app.register_blueprint(task_routes)
     return app
 
