@@ -38,7 +38,12 @@ class UserContoller:
     
     def authorise_user(self, token):
         """Authorise user"""
-        user = jwt.decode(token, os.getenv("JWT_SECRET"), algorithms=['HS256'])
-        return user['user_id'] if user else None
+        try:
+            user = jwt.decode(token, os.getenv("JWT_SECRET"), algorithms=['HS256'])
+            return user['user_id'] # if user else None
+        except jwt.ExpiredSignatureError:
+            return jsonify({"error": "Token expired"}), 400
+        except jwt.InvalidTokenError:
+            return jsonify({"error": "Invalid token"}), 400
 
 user_controller = UserContoller()
