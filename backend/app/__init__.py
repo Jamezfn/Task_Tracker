@@ -13,7 +13,7 @@ dotenv.load_dotenv()
 def create_app():
     """Initialization"""
     app = Flask(__name__)
-    CORS(app)
+    CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
     db.init_app(app)
     migrate.init_app(db=db, app=app)
