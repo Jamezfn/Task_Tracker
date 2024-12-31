@@ -37,7 +37,9 @@ const Login: React.FC = () => {
                 localStorage.setItem('token', token);
                 dispatch(setUser(user));
 
-                navigate('/');
+                setTimeout(() => {
+                    navigate('/')
+                }, 3000);
             })
             .catch((err: any) => {
                 console.log(err.response.data.error)

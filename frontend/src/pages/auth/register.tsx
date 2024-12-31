@@ -25,8 +25,8 @@ const Register: React.FC = () => {
             password
         })
             .then((response: AxiosResponse) => {
-                const { Message } = response.data;
-                toast.success(Message, {
+                const { message } = response.data;
+                toast.success(message, {
                     duration: 3000,
                     position: 'top-center',
                     icon: '🎉',
@@ -41,8 +41,7 @@ const Register: React.FC = () => {
                 }, 3000);
             })
             .catch((err: any) => {
-                console.log(err.response.data.error)
-                const errorMessage = err.response?.data?.error || 'something went wrong';
+                const errorMessage = err.response?.data?.error || err.message || 'Registration failed. Please try again.';
                 toast.error(errorMessage, {
                     duration: 4000,
                     position: 'top-center',

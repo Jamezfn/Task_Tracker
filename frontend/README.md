@@ -48,3 +48,21 @@ export default tseslint.config({
   },
 })
 ```
+
+
+How to run
+
+install all dependencies
+```bash
+npm install
+```
+
+Run in developement
+```bash
+npm run dev
+```
+
+Run production
+```bash
+npm run start
+```
