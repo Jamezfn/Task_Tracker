@@ -1,0 +1,56 @@
+POST http://127.0.0.1:5000/api/register
+Content-Type: application/json
+
+{
+    "name": "example123",
+    "email": "example123@gmail",
+    "password": "123456"
+}
+
+###
+POST http://127.0.0.1:5000/api/login
+Content-Type: application/json
+
+{
+    "email": "example123@gmail",
+    "password": "123456"
+}
+
+###
+GET http://127.0.0.1:5000/api/tasks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNGFmZTYzZGUtYTE2Yi00MWM0LWFkZjQtZWUxZTU3ZmYwMjYxIiwiZXhwIjoxNzM1NDk0ODYzfQ.4y8IeLm2Mng1HsQRR_Yk2peaSiqiMW7427vEru_cvFI
+
+###
+POST http://127.0.0.1:5000/api/tasks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNGFmZTYzZGUtYTE2Yi00MWM0LWFkZjQtZWUxZTU3ZmYwMjYxIiwiZXhwIjoxNzM1NDk0ODYzfQ.4y8IeLm2Mng1HsQRR_Yk2peaSiqiMW7427vEru_cvFI
+Content-Type: application/json
+
+{
+    "title": "Manchester city",
+    "description": "Manchester city vs New",
+    "status": "pending",
+    "start_date": "2024 10 3",
+    "due_date": "2025 03 1"
+}
+
+###
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODk3ZmZiZTAtZGM1YS00NDUyLTlhMzUtNTQ1OGMwZDc1NmU4IiwiZXhwIjoxNzM1NDExNTA4fQ.Arh-mpITeiYY-l1xsiHeRi2kKfd-jNvnf2Ucg2xH6uY
+
+
+###
+GET http://127.0.0.1:5000/api/tasks/d9754450-283b-4db9-9098-a8f940306af1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNGFmZTYzZGUtYTE2Yi00MWM0LWFkZjQtZWUxZTU3ZmYwMjYxIiwiZXhwIjoxNzM1NDk0ODYzfQ.4y8IeLm2Mng1HsQRR_Yk2peaSiqiMW7427vEru_cvFI
+Content-Type: application/json
+
+###
+DELETE http://127.0.0.1:5000/api/tasks/d9754450-283b-4db9-9098-a8f940306af1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNGFmZTYzZGUtYTE2Yi00MWM0LWFkZjQtZWUxZTU3ZmYwMjYxIiwiZXhwIjoxNzM1NDk0ODYzfQ.4y8IeLm2Mng1HsQRR_Yk2peaSiqiMW7427vEru_cvFI
+
+###
+PUT http://127.0.0.1:5000/api/tasks/052400bb-c188-4acd-9788-306ec9d2cea1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNGFmZTYzZGUtYTE2Yi00MWM0LWFkZjQtZWUxZTU3ZmYwMjYxIiwiZXhwIjoxNzM1NDk0ODYzfQ.4y8IeLm2Mng1HsQRR_Yk2peaSiqiMW7427vEru_cvFI
+Content-Type: application/json
+
+{
+    "title": ""
+}
