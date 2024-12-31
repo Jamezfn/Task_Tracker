@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template
+from flask import Blueprint, request, render_template, jsonify
 from app.conroller.user_conroller import user_controller
 
 auth_routes = Blueprint('auth_routes', __name__, url_prefix='/api')
@@ -9,11 +9,11 @@ def register():
     if request.method == 'POST':
         user = request.get_json()
         if not user.get('email'):
-            return "Missing email"
+            return jsonify({"error": "Missing email"}), 404
         if not user.get('name'):
-            return "Missing name"
+            return jsonify({"error": "Missing name"}), 404
         if not user.get('password'):
-            return "Missing password"
+            return jsonify({"error": "Missing password"}), 404
         
         return user_controller.create_user(user["name"], user["email"], user["password"])
     elif request.method == 'GET':

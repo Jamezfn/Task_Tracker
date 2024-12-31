@@ -1,0 +1,8 @@
+bcrypt
+PyJWT
+python-dotenv
+Flask
+Flask-SQLAlchemy
+Flask-Migrate
+pymysql
+flask-cors

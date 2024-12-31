@@ -26,10 +26,15 @@ class UserContoller:
             return jsonify({"error": "User not found check your email"}), 404
         if not bcrypt.checkpw(password.encode('utf-8'), user.password.encode('utf-8')):
             return jsonify({"error": "Password does not match"}), 400
+        
+        user_object = {
+            "name": user.name,
+            "email": user.email
+        }
     
         exp_time = datetime.utcnow() + timedelta(hours=1)
         token = jwt.encode({"user_id": user.id, "exp": exp_time}, os.getenv("JWT_SECRET"), algorithm='HS256')
-        return jsonify({"Message": "Login successful", "token": token}), 200
+        return jsonify({"Message": "Login successful", "token": token, "user": user_object }), 200
     
     def authorise_user(self, token):
         """Authorise user"""
