@@ -6,6 +6,7 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import userReducer from "../features/user/userSlice";
+import taskReducer from "../features/tasks/taskSlice";
 
 const persistConfig = {
     key: 'root',
@@ -14,6 +15,7 @@ const persistConfig = {
 
 const rootReducers = combineReducers({
     user: userReducer,
+    task: taskReducer
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);
