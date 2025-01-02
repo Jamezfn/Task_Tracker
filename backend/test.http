@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
     "name": "example123",
-    "email": "example123@gmail",
+    "email": "example2@gmail",
     "password": "123456"
 }
 
@@ -12,17 +12,25 @@ POST http://127.0.0.1:5000/api/login
 Content-Type: application/json
 
 {
-    "email": "example123@gmail",
+    "email": "example2@gmail",
     "password": "123456"
 }
 
 ###
 GET http://127.0.0.1:5000/api/tasks
+<<<<<<< HEAD
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiOTZiNTk4ZTEtZWZhYy00ZjIyLTlmM2ItNDkyMmQ2YWY5ZmY0IiwiZXhwIjoxNzM1NjY1NDEwfQ.Bj7ellxv0XWTA0oEYB8sPZSwu1rG4f4lMaey4Rpxlz8"
 
 ###
 POST http://127.0.0.1:5000/api/tasks
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiOTZiNTk4ZTEtZWZhYy00ZjIyLTlmM2ItNDkyMmQ2YWY5ZmY0IiwiZXhwIjoxNzM1NjY1NDEwfQ.Bj7ellxv0XWTA0oEYB8sPZSwu1rG4f4lMaey4Rpxlz8"
+=======
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODc3YTFiMjQtNDA4My00ODEzLTkyNjgtMGQ1MDk5M2JkMjAwIiwiZXhwIjoxNzM1ODE0NDAxfQ.vnTQ9CrovJLmaBwRu0YmUneGyMLD00IIy0l-gWDIQzM
+
+###
+POST http://127.0.0.1:5000/api/tasks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiODc3YTFiMjQtNDA4My00ODEzLTkyNjgtMGQ1MDk5M2JkMjAwIiwiZXhwIjoxNzM1NzQ4MjExfQ.qaERhws6fuhhNiAxugtzFL3-6AE-YYniN5UDNQQCD38
+>>>>>>> d31cbba0647350b98fe95363fb8071a6e8c038d7
 Content-Type: application/json
 
 {

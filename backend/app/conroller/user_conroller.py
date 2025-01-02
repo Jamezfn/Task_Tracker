@@ -6,6 +6,7 @@ import jwt
 import os
 import dotenv
 from datetime import datetime, timedelta
+from app.custom_exceptions import CustomJwtException
 
 dotenv.load_dotenv()
 
@@ -40,10 +41,18 @@ class UserContoller:
         """Authorise user"""
         try:
             user = jwt.decode(token, os.getenv("JWT_SECRET"), algorithms=['HS256'])
+<<<<<<< HEAD
             return user['user_id'] # if user else None
         except jwt.ExpiredSignatureError:
             return jsonify({"error": "Token expired"}), 400
         except jwt.InvalidTokenError:
             return jsonify({"error": "Invalid token"}), 400
+=======
+            return user['user_id'] if user else  None
+        except jwt.ExpiredSignatureError:
+            raise CustomJwtException("Token Expired")
+        except jwt.InvalidTokenError:
+            raise CustomJwtException("Invalid Token")
+>>>>>>> d31cbba0647350b98fe95363fb8071a6e8c038d7
 
 user_controller = UserContoller()
