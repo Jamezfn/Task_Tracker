@@ -42,7 +42,6 @@ const Login: React.FC = () => {
                 }, 3000);
             })
             .catch((err: any) => {
-                console.log(err.response.data.error)
                 const errorMessage = err.response?.data?.error || 'something went wrong';
                 toast.error(errorMessage, {
                     duration: 4000,

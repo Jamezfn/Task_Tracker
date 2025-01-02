@@ -3,15 +3,18 @@ from app.models.task import Task
 from flask import jsonify
 from app.conroller.user_conroller import user_controller
 from datetime import date
+from app.custom_exceptions import CustomJwtException
 
 class TaskController:
     """Contains task methods"""
     def createTask(self, token, title, description, status, start_date, due_date):
         """creates new tasks"""
-        user_id = user_controller.authorise_user(token)
-        if not user_id: return jsonify({"error": "Unauthorised user or expired token"}), 400
-        start = start_date.split(" ")
-        due = due_date.split(" ")
+        try:
+            user_id = user_controller.authorise_user(token)
+        except CustomJwtException as e:
+            return jsonify({"error": str(e)})
+        start = start_date.split("-")
+        due = due_date.split("-")
         db.session.add(Task(title=title, description=description, status=status,  user_id=user_id, start_date=date(int(start[0]), int(start[1]), int(start[2])), due_date=date(int(due[0]), int(due[1]), int(due[2]))))
         db.session.commit()
         return jsonify({"message": "task created succesfully"}), 201
@@ -19,8 +22,10 @@ class TaskController:
 
     def getTasks(self, token):
         """Retrieve all tasks"""
-        user_id = user_controller.authorise_user(token)
-        if not user_id: return jsonify({"error": "Unauthorised user or expired token"}), 404
+        try:
+            user_id = user_controller.authorise_user(token)
+        except CustomJwtException as e:
+            return jsonify({"error": str(e)}), 400
         tasks = db.session.query(Task).filter_by(user_id=user_id).all()
         if not tasks:
             return jsonify({"error": "User has no tasks"}), 400
@@ -40,9 +45,11 @@ class TaskController:
 
     def getTask(self, token, task_id):
         """Get specific task"""
-        user_id = user_controller.authorise_user(token)
-        if not user_id: return jsonify({"error": "Unauthorised user or expired token"}), 404
-        task = db.session.query(Task).filter_by(id=task_id).first()
+        try:
+            user_id = user_controller.authorise_user(token)
+        except CustomJwtException as e:
+            return jsonify({"error": str(e)}), 400
+        task = db.session.query(Task).filter_by(id=task_id, user_id=user_id).first()
         if not task:
             return jsonify({"error": "Task not found"}), 400
         tasks_1 = {
@@ -57,9 +64,11 @@ class TaskController:
 
     def updateTask(self, token, task_id, title=None, description=None, status=None, start_date=None, due_date=None):
         """update task"""
-        user_id = user_controller.authorise_user(token)
-        if not user_id: return jsonify({"error": "Unauthorised user or token expired"})
-        task = db.session.query(Task).filter_by(id=task_id).first()
+        try:
+            user_id = user_controller.authorise_user(token)
+        except CustomJwtException as e:
+            return jsonify({"error": str(e)}), 400
+        task = db.session.query(Task).filter_by(id=task_id, user_id=user_id).first()
         if not task: return jsonify({"error": "Task not found"}), 400
         
         # updating task
@@ -75,13 +84,15 @@ class TaskController:
 
     def deleteTask(self, token, task_id):
         """Delete task"""
-        user_id = user_controller.authorise_user(token)
-        if not user_id: return jsonify({"error": "Unauthorised user or token expired"})
-        task = db.session.query(Task).filter_by(id=task_id).first()
+        try:
+            user_id = user_controller.authorise_user(token)
+        except CustomJwtException as e:
+            return jsonify({"error": str(e)}), 400
+        task = db.session.query(Task).filter_by(id=task_id, user_id=user_id).first()
         if not task: return jsonify({"error": "Task not found"}), 400
         db.session.delete(task)
         db.session.commit()
-        return jsonify({"message": "Task deleted successfully"})
+        return jsonify({"message": "Task deleted successfully"}), 200
     
 
 task_controller = TaskController()
