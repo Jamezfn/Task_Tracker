@@ -36,7 +36,9 @@ const Body: React.FC = () => {
             })
             .catch((error: any) => {
                 console.log(error.response?.data?.error);
-                navigate('/auth/login')
+                if (error.response?.data?.error !== "User has no tasks") {
+                    navigate('/auth/login');
+                }                
             })
     };
     useEffect(() => {
