@@ -12,9 +12,9 @@ The **Task Tracker Web App** is a modern and responsive platform built to help u
 - Responsive and intuitive user interface.
 
 ## Tech Stack
-- **Frontend:** React, JavaScript
+- **Frontend:** React, Typescript
 - **Backend:** Flask
-- **Database:** SQLite
+- **Database:** Mysql
 - **Other Tools:** Axios (for API requests), React Router
 
 ## Installation
@@ -122,5 +122,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 **Built with ❤️ by Mukhola James**
 ```
-
-Would you like to include anything specific, such as screenshots or links to the live app?
